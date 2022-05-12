@@ -1,0 +1,23 @@
+html{
+    font-size: larger;
+}
+
+* { 
+    box-sizing: border-box;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+body {
+    margin: auto;
+    font-family: 'Montserrat',sans-serif;
+    font-style: normal;
+    user-select: none;
+    background-image: url(../assets/img/pattern_texture.jpg);
+    background-size: cover;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}

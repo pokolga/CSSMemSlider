@@ -14,19 +14,22 @@ body {
     font-style: normal;
     user-select: none;
     background-image: url(../assets/img/pattern_texture.jpg);
-    background-size: cover;
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 
 h1{
     text-align: center;
+    margin: 0.8rem auto;
     color: white;
 }
+
 .wrapper {
     position: relative;
     width: 70vw;
-    height: calc(33vw + 20vh);
+    height: calc(33vw + 16vh);
 	margin: 0 auto;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
     padding: 2vw;
 	background: linear-gradient(45deg, rgb(37,37,37) 0%,rgb(53,53,53) 10%, rgb(126,126,126) 100%);
 	box-shadow: 0 0 20px rgba(0, 0, 0, .5);
@@ -185,7 +188,8 @@ label:nth-last-child(){
     }
 
     .slider-footer{
-        min-height: 15vh;
+        min-height: 16vh;
+        margin-bottom: 0.025vh;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: flex-end;
@@ -205,10 +209,17 @@ label:nth-last-child(){
     .description {
         margin-top: 2vh;
         width: 86vw;
+        
     }
 
     .description > div {
         font-size: 0.8rem;
         padding-right: 0;
+        line-height: 1;
+    }
+}
+@media  screen and (orientation: portrait){
+    .wrapper {  
+        height: 50vh;
     }
 }

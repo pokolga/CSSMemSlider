@@ -155,3 +155,60 @@ label:nth-last-child(){
 #slide5:checked ~ .slider-footer label:nth-of-type(5) div{
 	background-color: transparent;
 }
+
+/****************min 1441px***************************/
+@media  all and (min-width: 1441px){
+    html {
+        font-size: 2vmin;
+    } 
+}
+
+/*****************mobile max 768px************************************/
+@media  all and (max-width: 768px){
+    h1 {
+        font-size: 0.8rem;
+    }
+
+    .wrapper {
+        width: 90vw;
+        height: calc(43vw + 30vh);
+    }
+
+    .wrapper label {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .slider {
+        width: 86vw;
+        height: 43vw;
+    }
+
+    .slider-footer{
+        min-height: 15vh;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .controls {
+        width: 33vw;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .controls label div{
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .description {
+        margin-top: 2vh;
+        width: 86vw;
+    }
+
+    .description > div {
+        font-size: 0.8rem;
+        padding-right: 0;
+    }
+}

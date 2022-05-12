@@ -21,3 +21,194 @@ h1{
     text-align: center;
     color: white;
 }
+.wrapper {
+    position: relative;
+    width: 70vw;
+    height: calc(33vw + 20vh);
+	margin: 0 auto;
+    margin-bottom: 5vh;
+    padding: 2vw;
+	background: linear-gradient(45deg, rgb(37,37,37) 0%,rgb(53,53,53) 10%, rgb(126,126,126) 100%);
+	box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+}
+
+.wrapper > input {
+	display: none;
+}
+
+.slider {
+    position: relative;
+	width: 66vw;
+	height: 33vw;
+	overflow: hidden;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+}
+
+.slide1 { background-image: url(../assets/img/panda1.jpg); }
+.slide2 { background-image: url(../assets/img/panda2.jpg); }
+.slide3 { background-image: url(../assets/img/panda3.jpg); } 
+.slide4 { background-image: url(../assets/img/panda4.png); } 
+.slide5 { background-image: url(../assets/img/panda5.jpg); }
+
+.slides {
+    position: absolute;
+	height: inherit;
+	width: inherit;
+    background-size: cover;
+    background-position-y: center;
+	opacity: 0;
+	z-index: 0;
+	transform: scale(1.5);
+	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+}
+
+#slide1:checked ~ .slider > .slide1,
+#slide2:checked ~ .slider > .slide2,
+#slide3:checked ~ .slider > .slide3,
+#slide4:checked ~ .slider > .slide4,
+#slide5:checked ~ .slider > .slide5 {
+	opacity: 1;
+	z-index: 1;
+	transform: scale(1);
+}
+
+.slider-footer{
+    display: flex;
+   /* height: 15vh;*/
+    margin: 2vh auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.controls,
+.description {
+   position: relative;
+}
+
+.description {
+   width: 66vw;
+}
+
+.description > div {
+   position: absolute;
+   color: white;
+   font-size: 0.8rem;
+   opacity: 0;
+   z-index: 0;
+   transform: scaleY(0);
+   transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+}
+
+#slide1:checked ~ .slider-footer  .desc1,
+#slide2:checked ~ .slider-footer  .desc2,
+#slide3:checked ~ .slider-footer  .desc3,
+#slide4:checked ~ .slider-footer  .desc4,
+#slide5:checked ~ .slider-footer  .desc5 {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.controls {
+    width: 11vw;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.controls label {
+    display: inline-block;
+    width: calc(2vw + 4px);
+    height: calc(2vw + 4px);
+    padding: 0.4vw;
+    position: relative;
+	cursor: pointer;
+}
+
+label:nth-last-child(){
+    padding-right: 0;
+}
+
+.controls label div{
+    width: 1.2vw;
+    height: 1.2vw;
+    position: relative;
+	cursor: pointer;
+	border-radius: 50%;
+    border: 2px solid #124e59;
+    background: #124e59;
+	transition: background ease-in-out .5s, border ease-in-out .5s;
+}
+
+.controls label:hover > div{
+    background: white;
+    border: 2px solid white;
+}  
+
+#slide1:checked ~ .slider-footer label:nth-of-type(1) div,
+#slide2:checked ~ .slider-footer label:nth-of-type(2) div,
+#slide3:checked ~ .slider-footer label:nth-of-type(3) div,
+#slide4:checked ~ .slider-footer label:nth-of-type(4) div,
+#slide5:checked ~ .slider-footer label:nth-of-type(5) div{
+	background-color: transparent;
+}
+
+/****************min 1441px***************************/
+@media  all and (min-width: 1441px){
+    html {
+        font-size: 2vmin;
+    } 
+}
+
+/*****************mobile max 768px************************************/
+@media  all and (max-width: 768px){
+    h1 {
+        font-size: 0.8rem;
+    }
+
+    .wrapper {
+        width: 90vw;
+        height: calc(43vw + 30vh);
+    }
+
+    .wrapper label {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .slider {
+        width: 86vw;
+        height: 43vw;
+    }
+
+    .slider-footer{
+        min-height: 15vh;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .controls {
+        width: 33vw;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .controls label div{
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .description {
+        margin-top: 2vh;
+        width: 86vw;
+    }
+
+    .description > div {
+        font-size: 0.8rem;
+        padding-right: 0;
+    }
+}

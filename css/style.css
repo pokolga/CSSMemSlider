@@ -80,7 +80,6 @@ h1{
 
 .slider-footer{
     display: flex;
-   /* height: 15vh;*/
     margin: 2vh auto;
     justify-content: space-between;
     align-items: flex-start;

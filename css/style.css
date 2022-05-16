@@ -13,9 +13,8 @@ body {
     font-family: 'Montserrat',sans-serif;
     font-style: normal;
     user-select: none;
-    background-image: url(../assets/img/pattern_texture.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
+    background:#24636e;
+    user-select: text;
 }
 
 h1{
@@ -25,14 +24,13 @@ h1{
 }
 
 .wrapper {
-    position: relative;
     width: 70vw;
-    height: calc(33vw + 16vh);
-	margin: 0 auto;
-    margin-bottom: 3vh;
+    height: auto;
+	margin: 0 auto 3vh auto;
     padding: 2vw;
+    overflow: hidden;
 	background: linear-gradient(45deg, rgb(37,37,37) 0%,rgb(53,53,53) 10%, rgb(126,126,126) 100%);
-	box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+	box-shadow: -3vmin -1.5vmin 15vmin rgba(0, 0, 0, 0.8);
     border-top-left-radius: 1vw;
     border-top-right-radius: 1vw;
 }
@@ -42,43 +40,76 @@ h1{
 }
 
 .slider {
-    position: relative;
-	width: 66vw;
+    width: 66vw;
 	height: 33vw;
 	overflow: hidden;
     border-top-left-radius: 1vw;
     border-top-right-radius: 1vw;
 }
 
-.slide1 { background-image: url(../assets/img/panda1.jpg); }
-.slide2 { background-image: url(../assets/img/panda2.jpg); }
-.slide3 { background-image: url(../assets/img/panda3.jpg); } 
-.slide4 { background-image: url(../assets/img/panda4.png); } 
-.slide5 { background-image: url(../assets/img/panda5.jpg); }
-
-.slides {
-    position: absolute;
-	height: inherit;
-	width: inherit;
-    background-size: cover;
-    background-position-y: center;
-	opacity: 0;
-	z-index: 0;
-	transform: scale(1.5);
-	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+.slider-wrapper{
+    width: 330vw;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-#slide1:checked ~ .slider > .slide1,
-#slide2:checked ~ .slider > .slide2,
-#slide3:checked ~ .slider > .slide3,
-#slide4:checked ~ .slider > .slide4,
-#slide5:checked ~ .slider > .slide5 {
-	opacity: 1;
-	z-index: 1;
-	transform: scale(1);
+
+.slides {
+    width: 66vw;
+	height: 33vw;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position-y: center;
+    opacity: 0;
+    
+	transition: transform .5s ease-in-out, opacity .5s ease-in-out;
+}
+
+.slide1 { 
+    background-image: url(../assets/img/panda1.jpg); 
+    transform: translateX(0vw) scaleX(2);
+}
+.slide2 { 
+    background-image: url(../assets/img/panda2.jpg); 
+    transform: translateX(-66vw) scaleX(2);
+}
+.slide3 { 
+    background-image: url(../assets/img/panda3.jpg); 
+    transform: translateX(-132vw) scaleX(2);
+} 
+.slide4 { 
+    background-image: url(../assets/img/panda4.png); 
+    transform: translateX(-198vw) scaleX(2);
+} 
+.slide5 { 
+    background-image: url(../assets/img/panda5.jpg); 
+    transform: translateX(-264vw) scaleX(2);
+}
+
+#slide1:checked ~ .slider .slide1{
+    transform: scaleX(1);
+    opacity: 1;
+}
+#slide2:checked ~ .slider .slide2{
+    transform: translateX(-66vw) scaleX(1);
+    opacity: 1;
+}
+#slide3:checked ~ .slider .slide3{
+    transform: translateX(-132vw) scaleX(1);
+    opacity: 1;
+}
+#slide4:checked ~ .slider .slide4{
+    transform: translateX(-198vw) scaleX(1);
+    opacity: 1;
+}
+#slide5:checked ~ .slider .slide5 {
+    transform: translateX(-264vw) scaleX(1);
+    opacity: 1;
 }
 
 .slider-footer{
+    width: 66vw;
     display: flex;
     margin: 2vh auto;
     justify-content: space-between;
@@ -86,32 +117,59 @@ h1{
     gap: 1rem;
 }
 
-.controls,
-.description {
-   position: relative;
+.controls {
+    flex-grow: 1;
 }
 
 .description {
-   width: 66vw;
+    height: 10vh;
+    overflow: hidden;
+    flex-grow: 3;
 }
 
 .description > div {
-   position: absolute;
-   color: white;
+   height: 5vh;
    font-size: 0.8rem;
    opacity: 0;
-   z-index: 0;
-   transform: scaleY(0);
-   transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+   color: white;
+   transition: transform .5s ease-out , opacity .1s ease;
 }
 
-#slide1:checked ~ .slider-footer  .desc1,
-#slide2:checked ~ .slider-footer  .desc2,
-#slide3:checked ~ .slider-footer  .desc3,
-#slide4:checked ~ .slider-footer  .desc4,
+.desc1 {
+    transform: translateY(10vh);
+}
+.desc2 {
+   	transform: translateY(5vh);
+}
+.desc3 {
+    transform: translateY(0vw);
+}
+.desc4{
+    transform: translateY(-5vh);
+}
+.desc5 {
+    transform: translateY(-10vh);
+}
+
+#slide1:checked ~ .slider-footer  .desc1 {
+    opacity: 1;
+    transform: translateY(0vw)  scaleY(1);
+}
+#slide2:checked ~ .slider-footer  .desc2 {
+    opacity: 1;
+   	transform: translateY(-5vh)  scaleY(1);
+}
+#slide3:checked ~ .slider-footer  .desc3 {
+    opacity: 1;
+    transform: translateY(-10vh)  scaleY(1);
+}
+#slide4:checked ~ .slider-footer  .desc4{
+    opacity: 1;
+    transform: translateY(-15vh)  scaleY(1);
+}
 #slide5:checked ~ .slider-footer  .desc5 {
 	opacity: 1;
-	transform: scale(1);
+    transform: translateY(-20vh)  scaleY(1);
 }
 
 .controls {
@@ -123,10 +181,9 @@ h1{
 
 .controls label {
     display: inline-block;
-    width: calc(2vw + 4px);
-    height: calc(2vw + 4px);
+    width: 2.2vw;
+    height: 2.2vw;
     padding: 0.4vw;
-    position: relative;
 	cursor: pointer;
 }
 
@@ -137,17 +194,15 @@ label:nth-last-child(){
 .controls label div{
     width: 1.2vw;
     height: 1.2vw;
-    position: relative;
 	cursor: pointer;
 	border-radius: 50%;
-    border: 2px solid #124e59;
+    border: 0.2vw solid #124e59;
     background: #124e59;
 	transition: background ease-in-out .5s, border ease-in-out .5s;
 }
 
 .controls label:hover > div{
     background: white;
-    border: 2px solid white;
 }  
 
 #slide1:checked ~ .slider-footer label:nth-of-type(1) div,
@@ -155,13 +210,17 @@ label:nth-last-child(){
 #slide3:checked ~ .slider-footer label:nth-of-type(3) div,
 #slide4:checked ~ .slider-footer label:nth-of-type(4) div,
 #slide5:checked ~ .slider-footer label:nth-of-type(5) div{
+    border: 0.3vw solid #124e59;
 	background-color: transparent;
 }
 
+.controls label:hover > div{
+    border: 0.2vw solid white !important;
+}  
 /****************min 1441px***************************/
 @media  all and (min-width: 1441px){
     html {
-        font-size: 2vmin;
+        font-size: 3vh;
     } 
 }
 
@@ -173,7 +232,6 @@ label:nth-last-child(){
 
     .wrapper {
         width: 90vw;
-        height: calc(43vw + 30vh);
     }
 
     .wrapper label {
@@ -183,12 +241,55 @@ label:nth-last-child(){
 
     .slider {
         width: 86vw;
-        height: 43vw;
+    }
+
+    .slider-wrapper{
+        width: 430vw;
+    }
+    
+    .slides {
+        width: 86vw;
+    }
+
+    .slide2 { 
+        background-image: url(../assets/img/panda2.jpg); 
+        transform: translateX(-86vw) scaleX(2);
+    }
+    .slide3 { 
+        background-image: url(../assets/img/panda3.jpg); 
+        transform: translateX(-172vw) scaleX(2);
+    } 
+    .slide4 { 
+        background-image: url(../assets/img/panda4.png); 
+        transform: translateX(-258vw) scaleX(2);
+    } 
+    .slide5 { 
+        background-image: url(../assets/img/panda5.jpg); 
+        transform: translateX(-344vw) scaleX(2);
+    }
+    
+    #slide1:checked ~ .slider .slide1{
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    #slide2:checked ~ .slider .slide2{
+        transform: translateX(-86vw) scaleX(1);
+        opacity: 1;
+    }
+    #slide3:checked ~ .slider .slide3{
+        transform: translateX(-172vw) scaleX(1);
+        opacity: 1;
+    }
+    #slide4:checked ~ .slider .slide4{
+        transform: translateX(-258vw) scaleX(1);
+        opacity: 1;
+    }
+    #slide5:checked ~ .slider .slide5 {
+        transform: translateX(-344vw) scaleX(1);
+        opacity: 1;
     }
 
     .slider-footer{
-        min-height: 16vh;
-        margin-bottom: 0.025vh;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: flex-end;
@@ -203,22 +304,25 @@ label:nth-last-child(){
     .controls label div{
         width: 0.8rem;
         height: 0.8rem;
+        border-width: 1vw;
+    }
+
+    #slide1:checked ~ .slider-footer label:nth-of-type(1) div,
+    #slide2:checked ~ .slider-footer label:nth-of-type(2) div,
+    #slide3:checked ~ .slider-footer label:nth-of-type(3) div,
+    #slide4:checked ~ .slider-footer label:nth-of-type(4) div,
+    #slide5:checked ~ .slider-footer label:nth-of-type(5) div{
+        border: 0.5vw solid #124e59;
     }
 
     .description {
-        margin-top: 2vh;
         width: 86vw;
-        
+        height: 15vh;
     }
 
     .description > div {
         font-size: 0.8rem;
         padding-right: 0;
-        line-height: 1;
-    }
-}
-@media  screen and (orientation: portrait){
-    .wrapper {  
-        height: 50vh;
+        line-height: 1.2rem;
     }
 }
